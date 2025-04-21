@@ -28,10 +28,30 @@
       console.log(`${number1} / ${number2} = ${result}`);
     }
 
-    add(2, 5);
-    subtract(8,2);
-    multiply(2, 5);
-    divide(8, 2);
+    function calculator(number1, operator, number2){
+      switch(operator){
+        case "+":
+          add(number1, number2);
+          break;
+        case "-":
+          subtract(number1, number2);
+          break;
+        case "/":
+          divide(number1, number2);
+          break;
+        case "*": 
+          multiply(number1, number2);
+          break;
+        default:
+          console.log("ERROR: Input valid OPERATOR !!!");
+      }
+    }
+
+    calculator(2, "+", 3);
+    calculator(10, "-", 4);
+    calculator(2, "*", 5);
+    calculator(8, "/", 2);
+
   </script>
 </body>
 </html>
