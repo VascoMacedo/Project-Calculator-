@@ -6,75 +6,218 @@
   <title>Document</title>
 </head>
 <body>
-  <label>Calculator Result</label>
+  <div class="calculationResult"></div>
   <div>
-    <button>1</button>
-    <button>2</button>
-    <button>3</button>
-    <button>*</button>
+    <button class="oneButton">1</button>
+    <button class="twoButton">2</button>
+    <button class="threeButton">3</button>
+    <button class="multiButton">*</button>
   </div>
   <div>
-    <button>4</button>
-    <button>5</button>
-    <button>6</button>
-    <button>/</button>
+    <button class="fourButton">4</button>
+    <button class="fiveButton">5</button>
+    <button class="sixButton">6</button>
+    <button class="divisionButton">/</button>
   </div>  
   <div>
-    <button>7</button>
-    <button>8</button>
-    <button>9</button>
-    <button>=</button>
+    <button class="sevenButton">7</button>
+    <button class="eightButton">8</button>
+    <button class="nineButton">9</button>
+    <button class="equalButton">=</button>
   </div>
   <div>
-    <button>+</button>
-    <button>0</button>
-    <button>-</button>
-    <button>C</button>
+    <button class="plusButton">+</button>
+    <button class="zeroButton">0</button>
+    <button class="minusButton">-</button>
+    <button class="clearButton">C</button>
   </div>
   <script>
     function add(number1, number2){
       const result = number1 + number2;
       console.log(`${number1} + ${number2} = ${result}`);
+      return result;
     }
 
     function subtract(number1, number2){
       const result = number1 - number2;
       console.log(`${number1} - ${number2} = ${result}`);
+      return result;
     }
 
     function multiply(number1, number2){
       const result = number1 * number2;
       console.log(`${number1} * ${number2} = ${result}`);
+      console.log(typeof result);
+      return result;
     }
 
     function divide(number1, number2){
       const result = number1 / number2;
       console.log(`${number1} / ${number2} = ${result}`);
+      return result;
     }
 
-    function calculator(number1, operator, number2){
+
+    let trackingNumber = 0;
+    let trackingOperator;
+    let trackingNumber2 = 0;
+
+    const oneBtn = document.querySelector(".oneButton");
+    oneBtn.addEventListener( "click", () => {
+      //displayCalculator(oneBtn.innerText);
+      saveDisplayNumber(oneBtn.innerText);
+      displayCalculator(trackingNumber);
+    });
+
+    const twoBtn = document.querySelector(".twoButton");
+    twoBtn.addEventListener( "click", () => {
+      //displayCalculator(twoBtn.innerText);
+      saveDisplayNumber(twoBtn.innerText);
+      displayCalculator(trackingNumber);
+    });
+
+    const threeBtn = document.querySelector(".threeButton");
+    threeBtn.addEventListener( "click", () => {
+      //displayCalculator(threeBtn.innerText);
+      saveDisplayNumber(threeBtn.innerText);
+      displayCalculator(trackingNumber);
+    });
+
+    const multiBtn = document.querySelector(".multiButton");
+    multiBtn.addEventListener( "click", () => {
+      displayCalculator(multiBtn.innerText);
+      selectOperator(multiBtn.innerText);
+
+      //saveDisplayNumber(multiBtn.innerText);
+      //displayCalculator(trackingNumber);
+    });
+
+    const fourBtn = document.querySelector(".fourButton");
+    fourBtn.addEventListener( "click", () => {      
+      //displayCalculator(oneBtn.innerText);
+      saveDisplayNumber(fourBtn.innerText);
+      displayCalculator(trackingNumber);
+    });
+
+    const fiveBtn = document.querySelector(".fiveButton");
+    fiveBtn.addEventListener( "click", () => {      
+      //displayCalculator(oneBtn.innerText);
+      saveDisplayNumber(fiveBtn.innerText);
+      displayCalculator(trackingNumber);
+    });
+
+    const sixBtn = document.querySelector(".sixButton");
+    sixBtn.addEventListener( "click", () => {     
+      //displayCalculator(oneBtn.innerText);
+      saveDisplayNumber(sixBtn.innerText);
+      displayCalculator(trackingNumber);
+    });
+    
+    const divisionBtn = document.querySelector(".divisionButton");
+    divisionBtn.addEventListener( "click", () => {      
+      displayCalculator(divisionBtn.innerText);
+      selectOperator(divisionBtn.innerText);
+    });
+
+    const sevenBtn = document.querySelector(".sevenButton");
+    sevenBtn.addEventListener( "click", () => {      
+      //displayCalculator(oneBtn.innerText);
+      saveDisplayNumber(sevenBtn.innerText);
+      displayCalculator(trackingNumber);
+    });
+
+    const eightBtn = document.querySelector(".eightButton");
+    eightBtn.addEventListener( "click", () => {      
+      //displayCalculator(oneBtn.innerText);
+      saveDisplayNumber(eightBtn.innerText);
+      displayCalculator(trackingNumber);
+    });
+
+    const nineBtn = document.querySelector(".nineButton");
+    nineBtn.addEventListener( "click", () => {      
+      //displayCalculator(oneBtn.innerText);
+      saveDisplayNumber(nineBtn.innerText);
+      displayCalculator(trackingNumber);
+    });
+
+    const equalBtn = document.querySelector(".equalButton");
+    equalBtn.addEventListener( "click", () => {  
+      let showResult = calculator(trackingNumber, trackingOperator, trackingNumber2);
+      console.log(` showResult = ${showResult}`);    
+      displayCalculator(showResult);
+      //displayCalculator(equalBtn.innerText);
+      clearTrackers();
+      trackingNumber = showResult;
+    });
+
+    const plusBtn = document.querySelector(".plusButton");
+    plusBtn.addEventListener( "click", () => {
+      displayCalculator(plusBtn.innerText);      
+      selectOperator(plusBtn.innerText);      
+      console.log(typeof trackingOperator);
+    });
+
+    const zeroBtn = document.querySelector(".zeroButton");
+    zeroBtn.addEventListener( "click", () => {      
+      //displayCalculator(oneBtn.innerText);
+      saveDisplayNumber(zeroBtn.innerText);
+      displayCalculator(trackingNumber);
+    });
+
+    const minusBtn = document.querySelector(".minusButton");
+    minusBtn.addEventListener( "click", () => {      
+      displayCalculator(minusBtn.innerText);      
+      selectOperator(minusBtn.innerText);
+    });
+
+    const clearBtn = document.querySelector(".clearButton");
+    clearBtn.addEventListener( "click", () => {
+      displayCalculator("");
+      clearTrackers();
+    });
+
+
+
+    function calculator(number1, operator, number2){      
       switch(operator){
         case "+":
-          add(number1, number2);
+          return add(number1, number2);
           break;
         case "-":
-          subtract(number1, number2);
+          return subtract(number1, number2);
           break;
         case "/":
-          divide(number1, number2);
+          return divide(number1, number2);
           break;
         case "*": 
-          multiply(number1, number2);
+          return multiply(number1, number2);
           break;
         default:
           console.log("ERROR: Input valid OPERATOR !!!");
-      }
+      }      
     }
 
-    calculator(2, "+", 3);
-    calculator(10, "-", 4);
-    calculator(2, "*", 5);
-    calculator(8, "/", 2);
+    function displayCalculator(text){
+      const display = document.querySelector(".calculationResult");
+      display.innerText = text;
+    }
+    
+    function saveDisplayNumber(text){
+      trackingNumber = trackingNumber * 10;
+      trackingNumber = trackingNumber + Number(text);      
+    }
+
+    function selectOperator(text){
+      trackingNumber2 = trackingNumber;
+      trackingNumber = 0;
+      trackingOperator = text;
+    }
+
+    function clearTrackers(){      
+      trackingNumber = 0;
+      trackingNumber2 = 0;
+      trackingOperator = "";
+    }
 
   </script>
 </body>
