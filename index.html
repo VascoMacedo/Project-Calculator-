@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Calculator Project</title>
 </head>
 <body>
   <div class="calculationResult"></div>
@@ -142,7 +142,7 @@
 
     const equalBtn = document.querySelector(".equalButton");
     equalBtn.addEventListener( "click", () => {  
-      let showResult = calculator(trackingNumber, trackingOperator, trackingNumber2);
+      let showResult = operate(trackingNumber, trackingOperator, trackingNumber2);
       console.log(` showResult = ${showResult}`);    
       displayCalculator(showResult);
       //displayCalculator(equalBtn.innerText);
@@ -178,7 +178,7 @@
 
 
 
-    function calculator(number1, operator, number2){      
+    function operate(number1, operator, number2){      
       switch(operator){
         case "+":
           return add(number1, number2);
