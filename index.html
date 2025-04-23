@@ -59,7 +59,7 @@
 
 
     let trackingNumber = 0;
-    let trackingOperator;
+    let trackingOperator = "";
     let trackingNumber2 = 0;
 
     const oneBtn = document.querySelector(".oneButton");
@@ -152,7 +152,20 @@
 
     const plusBtn = document.querySelector(".plusButton");
     plusBtn.addEventListener( "click", () => {
-      displayCalculator(plusBtn.innerText);      
+      if(trackingOperator !== ""){
+        console.log("JA USOU UM OPERADOR");
+        let showResult = operate(trackingNumber, trackingOperator, trackingNumber2);
+        console.log(` showResult = ${showResult}`);
+
+        //APAGAR??? (NAO)
+        trackingNumber = showResult;        
+        displayCalculator(`${showResult}  ${plusBtn.innerText}`);
+        console.log(` trackingNumber = ${trackingNumber}; trackingNumber2 = ${trackingNumber}; trackingOperator = ${trackingOperator}`);
+      }else{
+        displayCalculator(plusBtn.innerText); 
+      }
+      
+      //displayCalculator(plusBtn.innerText);      
       selectOperator(plusBtn.innerText);      
       console.log(typeof trackingOperator);
     });
@@ -166,8 +179,26 @@
 
     const minusBtn = document.querySelector(".minusButton");
     minusBtn.addEventListener( "click", () => {      
-      displayCalculator(minusBtn.innerText);      
-      selectOperator(minusBtn.innerText);
+      if(trackingOperator !== ""){
+        console.log("JA USOU UM OPERADOR");
+        let showResult = operate(trackingNumber, trackingOperator, trackingNumber2);
+        console.log(` showResult = ${showResult}`);
+
+        //APAGAR??? (NAO)
+        trackingNumber = showResult;        
+        displayCalculator(`${showResult}  ${minusBtn.innerText}`);
+        console.log(` trackingNumber = ${trackingNumber}; trackingNumber2 = ${trackingNumber}; trackingOperator = ${trackingOperator}`);
+      }else{
+        displayCalculator(minusBtn.innerText); 
+      }
+      
+      //displayCalculator(plusBtn.innerText);      
+      selectOperator(minusBtn.innerText);      
+      console.log(typeof trackingOperator);
+      
+      // VERSAO ANTERIOR DO MENOS !!!
+      //displayCalculator(minusBtn.innerText);      
+      //selectOperator(minusBtn.innerText);
     });
 
     const clearBtn = document.querySelector(".clearButton");
