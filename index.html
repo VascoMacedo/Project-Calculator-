@@ -85,11 +85,22 @@
 
     const multiBtn = document.querySelector(".multiButton");
     multiBtn.addEventListener( "click", () => {
-      displayCalculator(multiBtn.innerText);
-      selectOperator(multiBtn.innerText);
+      if(trackingOperator !== ""){
+        console.log("JA USOU UM OPERADOR");        
+        let showResult = operate(trackingNumber, trackingOperator, trackingNumber2);
+        console.log(` showResult = ${showResult}`);
 
-      //saveDisplayNumber(multiBtn.innerText);
-      //displayCalculator(trackingNumber);
+        //APAGAR??? (NAO)
+        trackingNumber = showResult;        
+        displayCalculator(`${showResult}  ${multiBtn.innerText}`);
+        console.log(` trackingNumber = ${trackingNumber}; trackingNumber2 = ${trackingNumber}; trackingOperator = ${trackingOperator}`);
+      }else{
+        displayCalculator(multiBtn.innerText); 
+      }
+      
+      //displayCalculator(plusBtn.innerText);      
+      selectOperator(multiBtn.innerText);      
+      console.log(typeof trackingOperator);            
     });
 
     const fourBtn = document.querySelector(".fourButton");
@@ -115,8 +126,22 @@
     
     const divisionBtn = document.querySelector(".divisionButton");
     divisionBtn.addEventListener( "click", () => {      
-      displayCalculator(divisionBtn.innerText);
-      selectOperator(divisionBtn.innerText);
+      if(trackingOperator !== ""){
+        console.log("JA USOU UM OPERADOR");        
+        let showResult = operate(trackingNumber, trackingOperator, trackingNumber2);
+        console.log(` showResult = ${showResult}`);
+
+        //APAGAR??? (NAO)
+        trackingNumber = showResult;        
+        displayCalculator(`${showResult}  ${divisionBtn.innerText}`);
+        console.log(` trackingNumber = ${trackingNumber}; trackingNumber2 = ${trackingNumber}; trackingOperator = ${trackingOperator}`);
+      }else{
+        displayCalculator(divisionBtn.innerText); 
+      }
+      
+      //displayCalculator(plusBtn.innerText);      
+      selectOperator(divisionBtn.innerText);      
+      console.log(typeof trackingOperator);
     });
 
     const sevenBtn = document.querySelector(".sevenButton");
