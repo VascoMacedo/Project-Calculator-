@@ -133,14 +133,17 @@
         console.log("JA USOU UM OPERADOR");        
         let showResult = operate(trackingNumber, trackingOperator, trackingNumber2);
         console.log(` showResult = ${showResult}`);
-
-        //APAGAR??? (NAO)
-        trackingNumber = showResult;        
+              
         displayCalculator(`${showResult}  ${divisionBtn.innerText}`);
+        if(trackingOperator == "/" && trackingNumber == 0){
+          displayCalculator(`NO DIV By: ${trackingNumber}`);       
+        }
+
+        trackingNumber = showResult; 
         console.log(` trackingNumber = ${trackingNumber}; trackingNumber2 = ${trackingNumber}; trackingOperator = ${trackingOperator}`);
       }else{
         displayCalculator(divisionBtn.innerText); 
-      }
+      }      
       
       //displayCalculator(plusBtn.innerText);      
       selectOperator(divisionBtn.innerText);      
@@ -255,7 +258,7 @@
           return subtract(number2, number1);
           break;
         case "/":
-          return divide(number2, number1);
+          return divide(number2, number1);          
           break;
         case "*": 
           return multiply(number1, number2);
