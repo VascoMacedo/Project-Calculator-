@@ -47,14 +47,14 @@
     function multiply(number1, number2){
       const result = number1 * number2;
       console.log(`${number1} * ${number2} = ${result}`);
-      console.log(typeof result);
-      return result;
+      console.log(typeof result);      
+      return Math.round(result);
     }
 
     function divide(number1, number2){
       const result = number1 / number2;
       console.log(`${number1} / ${number2} = ${result}`);
-      return result;
+      return Math.round(result);
     }
 
 
@@ -166,13 +166,17 @@
     });
 
     const equalBtn = document.querySelector(".equalButton");
-    equalBtn.addEventListener( "click", () => {  
+    equalBtn.addEventListener( "click", () => {        
       let showResult = operate(trackingNumber, trackingOperator, trackingNumber2);
       console.log(` showResult = ${showResult}`);    
       displayCalculator(showResult);
-      //displayCalculator(equalBtn.innerText);
+      
+      if(trackingOperator == ""){
+        displayCalculator("INSERT VALID OPERATOR");       
+      }
+
       clearTrackers();
-      trackingNumber = showResult;
+      trackingNumber = showResult;      
     });
 
     const plusBtn = document.querySelector(".plusButton");
