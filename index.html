@@ -175,6 +175,10 @@
         displayCalculator("INSERT VALID OPERATOR");       
       }
 
+      if(trackingOperator == "/" && trackingNumber == 0){
+        displayCalculator(`NO DIV By: ${trackingNumber}`);       
+      }
+
       clearTrackers();
       trackingNumber = showResult;      
     });
